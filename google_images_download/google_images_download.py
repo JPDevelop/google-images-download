@@ -215,7 +215,6 @@ class googleimagesdownload:
             except:
                 print("Could not open URL. Please check your internet connection and/or ssl settings \n"
                       "If you are using proxy, make sure your proxy settings is configured correctly")
-                sys.exit()
         else:  # If the Current Version of Python is 2.x
             try:
                 req = urllib2.Request(url, headers=headers)
@@ -228,14 +227,12 @@ class googleimagesdownload:
             except:
                 print("Could not open URL. Please check your internet connection and/or ssl settings \n"
                       "If you are using proxy, make sure your proxy settings is configured correctly")
-                sys.exit()
                 return "Page Not found"
         try:
             return self._image_objects_from_pack(self._extract_data_pack(respData)), self.get_all_tabs(respData)
         except Exception as e:
             print(e)
             print('Image objects data unpacking failed. Please leave a comment with the above error at https://github.com/hardikvasa/google-images-download/pull/298')
-            sys.exit()
 
     # Download Page for more than 100 images
     def download_extended_page(self, url, chromedriver):
@@ -254,7 +251,6 @@ class googleimagesdownload:
             print("Looks like we cannot locate the path the 'chromedriver' (use the '--chromedriver' "
                   "argument to specify the path to the executable.) or google chrome browser is not "
                   "installed on your machine (exception: %s)" % e)
-            sys.exit()
         browser.set_window_size(1024, 768)
 
         # Open the link
@@ -602,7 +598,6 @@ class googleimagesdownload:
             else:
                 print("Invalid file type: Valid file types are either .txt or .csv \n"
                       "exiting...")
-                sys.exit()
         return search_keyword
 
     # make directories
